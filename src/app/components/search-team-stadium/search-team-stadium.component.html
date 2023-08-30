@@ -1,0 +1,64 @@
+<app-banner title="search-team-stadium"></app-banner>
+<div class="site-section" style="margin-left: 150px; padding-top: 100px">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-7">
+        <form [formGroup]="searchForm">
+          <div class="form-group">
+            Stadium Name<input
+              type="text"
+              formControlName="stadium"
+              class="form-control"
+              placeholder="Stadium"
+            />
+          </div>
+
+          <div
+            *ngIf="
+              searchForm.controls['stadium'].invalid &&
+              (searchForm.controls['stadium'].touched ||
+                searchForm.controls['stadium'].dirty)
+            "
+          >
+            <div *ngIf="searchForm.controls['stadium'].errors.required">
+              Stadium name required
+            </div>
+            <div *ngIf="searchForm.controls['stadium'].errors.minlength">
+              Stadium name must have at least 3 chars
+            </div>
+          </div>
+          <span id="matchingTeams"></span>
+          <div class="form-group">
+            <input
+              type="submit"
+              (click)="search()"
+              [disabled]="searchForm.invalid"
+              class="btn btn-primary py-2 px-4"
+              value="Search"
+            />
+          </div>
+        </form>
+        <div>
+            <p>Team Name : {{teams.name}}</p>
+        </div>
+      </div>
+      <div class="col-lg-4 ml-auto">
+        <ul class="list-unstyled">
+          <li class="mb-2">
+            <strong class="text-white d-block">Address</strong>
+            273 South Riverview Rd. <br />
+            New York, NY 10011
+          </li>
+          <li class="mb-2">
+            <strong class="text-white d-block">Email</strong>
+            <a href="#">info@unslate.co</a>
+          </li>
+          <li class="mb-2">
+            <strong class="text-white d-block"> Phone </strong>
+            <a href="#">+12 345 6789 012</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<form>
+  <div  class="text-center">
+  <label for="">Filter By team </label>
+  <input type="text"  [(ngModel)]="term">
+  </div>
+ </form>
+ <p>Here value : {{term}}</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">score one</th>
+      <th scope="col">score two</th>
+      <th scope="col">team one</th>
+      <th scope="col">team two</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let m of pageOfItems">
+      <th scope="row">{{m._id}}</th>
+      <td>{{m.scoreOne}}</td>
+      <td>{{m.scoreTwo}}</td>
+      <td>{{m.teamOne}}</td>
+      <td>{{m.teamTwo}}</td>
+      <td>
+        <button class="btn btn-outline-success" style="margin-right: 10px" (click)="displayMatch(m._id)">
+          display</button
+        ><button class="btn btn-outline-warning" style="margin-right: 10px" (click)="editMatch(m._id)">
+          Update</button
+        ><button class="btn btn-outline-danger" (click)="deleteMatch(m._id)">Delete</button>
+      </td>
+    </tr>
+    <div class="card-footer pb-0 pt-3">
+      <jw-pagination
+     [items]="matchesTab" [pageSize]="5" (changePage)="onChangePage($event)"></jw-pagination>
+     </div>
+  </tbody>
+</table>

@@ -1,0 +1,75 @@
+<app-banner title="Signup"></app-banner>
+
+<div class="site-section" style="margin-left: 150px; padding-top: 100px;">
+   <div class="container">
+     <div class="row">
+       <div class="col-lg-7">
+         <form [formGroup]="signupForm">
+           <div class="form-group">
+             First Name<input type="text" formControlName="firstName" class="form-control" placeholder="First Name">
+           </div>
+           <div *ngIf="signupForm.controls['firstName'].invalid && (signupForm.controls['firstName'].touched || signupForm.controls['firstName'].dirty) ">
+              <div *ngIf="signupForm.controls['firstName'].errors.required">First Name requied</div>
+              <div *ngIf="signupForm.controls['firstName'].errors.minlength">First Name must have at least 3 chars</div>
+           </div>
+           <div class="form-group">
+             Last Name<input type="text" formControlName="lastName" class="form-control" placeholder="Last Name">
+           </div>
+           <div *ngIf="signupForm.controls['lastName'].invalid && (signupForm.controls['firstName'].touched || signupForm.controls['lastName'].dirty) ">
+            <div *ngIf="signupForm.controls['lastName'].errors.required">Last Name requied</div>
+            <div *ngIf="signupForm.controls['lastName'].errors.minlength">Last Name must have at least 3 chars</div>
+         </div>
+           <div class="form-group">
+             Email<input type="text" formControlName="email" class="form-control" placeholder="Email">
+           </div>
+           <div class="form-group">
+             Password<input type="password" formControlName="pwd" class="form-control" placeholder="password">
+           </div>
+           <div *ngIf="signupForm.controls['pwd'].invalid && (signupForm.controls['pwd'].touched || signupForm.controls['pwd'].dirty) ">
+            <div *ngIf="signupForm.controls['pwd'].errors.required">Password requied</div>
+            <div *ngIf="signupForm.controls['pwd'].errors.minlength">Password must have at least 3 chars</div>
+         </div>
+           <div class="form-group">
+            Tel<input type="tel" formControlName="tel" class="form-control" placeholder="Tel">
+           </div>
+           <div *ngIf="signupForm.controls['tel'].invalid && signupForm.controls['tel'].touched ">
+            <div *ngIf="signupForm.controls['tel'].errors.required"> Tel requied</div>
+         </div>
+           <div class="form-group" style="visibility: hidden;">
+            <input type="file" class="form-control" #filePicker (change)="onImageSelected($event)">
+           </div>
+           <div class="text-center" style=" margin-bottom: 30px;">
+            <button class="btn btn-warning" (click)="filePicker.click()">Select your Avatar</button>
+           </div>
+           <div style="display: flex; justify-content: center; align-items: center; margin-top: 15px;margin-bottom: 15px;">
+            <img style="height: 200px; width: 200px;" [src]="imagePreview" *ngIf="imagePreview" alt="">
+           </div>
+         
+           <div class="text-center">
+            <input type="submit" (click)="signup()" class="btn btn-primary py-2 px-4" value="Signup">
+           </div>
+   
+         </form> 
+       </div>
+       <div class="col-lg-4 ml-auto">
+         
+         <ul class="list-unstyled">
+           <li class="mb-2">
+             <strong class="text-white d-block">Address</strong>
+             273 South Riverview Rd. <br> New York, NY 10011
+           </li>
+           <li class="mb-2">
+             <strong class="text-white d-block">Email</strong>
+             <a href="#">info@unslate.co</a>
+           </li>
+           <li class="mb-2">
+             <strong class="text-white d-block">
+               Phone
+             </strong>
+             <a href="#">+12 345 6789 012</a>
+           </li>
+         </ul>
+       </div>
+     </div>
+   </div>
+ </div>

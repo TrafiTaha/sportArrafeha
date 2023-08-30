@@ -1,0 +1,58 @@
+<app-banner title="IMC"></app-banner>
+
+<div class="site-section" style="margin-left: 150px; padding-top: 100px;">
+   <div class="container">
+     <div class="row">
+       <div class="col-lg-7">
+         <form [formGroup]="imcForm">
+           <div class="form-group">
+             Name<input type="text" formControlName="name" class="form-control" placeholder="Name">
+           </div>
+           <div *ngIf="imcForm.controls['name'].invalid && (imcForm.controls['name'].touched || imcForm.controls['name'].dirty) ">
+              <div *ngIf="imcForm.controls['name'].errors.required"> Name required</div>
+           </div>
+           <div class="form-group">
+             Taille(cm)<input type="number" formControlName="taille" class="form-control" placeholder="Taille">
+           </div>
+           <div *ngIf="imcForm.controls['taille'].invalid && (imcForm.controls['taille'].touched || imcForm.controls['taille'].dirty) ">
+            <div *ngIf="imcForm.controls['taille'].errors.required">Taille required</div>
+         </div>
+           <div class="form-group">
+             Poids(kg)<input type="number" formControlName="poids" class="form-control" placeholder="Poids">
+           </div>
+           <div *ngIf="imcForm.controls['poids'].invalid && imcForm.controls['poids'].touched || imcForm.controls['poids'].dirty ">
+            <div *ngIf="signupForm.controls['email'].errors.required"> Email requied</div>
+            <div *ngIf="signupForm.controls['email'].errors.email">Email format is wrong</div>
+         </div>
+         <div *ngIf="imcForm.controls['poids'].errors.required">Poids required</div>
+           <div class="form-group">
+            <input type="submit" (click)="calculateIMC()" class="btn btn-primary py-2 px-4" value="Calcul">
+           </div>
+         </form> 
+         <div *ngFor="let match of matchesTab">
+            <p>IMC Message: {{ imcMessage }}</p>
+          </div>
+          
+       </div>
+       <div class="col-lg-4 ml-auto">
+         
+         <ul class="list-unstyled">
+           <li class="mb-2">
+             <strong class="text-white d-block">Address</strong>
+             273 South Riverview Rd. <br> New York, NY 10011
+           </li>
+           <li class="mb-2">
+             <strong class="text-white d-block">Email</strong>
+             <a href="#">info@unslate.co</a>
+           </li>
+           <li class="mb-2">
+             <strong class="text-white d-block">
+               Phone
+             </strong>
+             <a href="#">+12 345 6789 012</a>
+           </li>
+         </ul>
+       </div>
+     </div>
+   </div>
+ </div>

@@ -1,0 +1,62 @@
+<app-banner title="weather"></app-banner>
+
+<div class="site-section" style="margin-left: 150px; padding-top: 100px">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-7">
+        <form [formGroup]="weatherForm">
+          <div class="form-group">
+            City<input
+              type="text"
+              formControlName="city"
+              class="form-control"
+              placeholder="City"
+            />
+          </div>
+          <div
+            *ngIf="
+              weather.controls['weather'].invalid &&
+              (weather.controls['weather'].touched ||
+                weather.controls['weather'].dirty)
+            "
+          >
+            <div *ngIf="weather.controls['weather'].errors.required">
+              City requied
+            </div>
+          </div>
+          <div class="text-center">
+            <input
+              type="submit"
+              (click)="weather()"
+              class="btn btn-primary py-2 px-4"
+              value="search"
+            />
+          </div>
+        </form>
+        <!-- <i [class]="'fas fa-' + getWeatherIcon(data.result.icon)"></i> -->
+        <div *ngIf="result">
+        <p> temp : {{result.tem}}</p>
+        <p> humidity : {{result.humidity}}</p>
+        <p> pressure : {{result.pressure}}</p>
+      </div>
+      </div>
+      <div class="col-lg-4 ml-auto">
+        <ul class="list-unstyled">
+          <li class="mb-2">
+            <strong class="text-white d-block">Address</strong>
+            273 South Riverview Rd. <br />
+            New York, NY 10011
+          </li>
+          <li class="mb-2">
+            <strong class="text-white d-block">Email</strong>
+            <a href="#">info@unslate.co</a>
+          </li>
+          <li class="mb-2">
+            <strong class="text-white d-block"> Phone </strong>
+            <a href="#">+12 345 6789 012</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

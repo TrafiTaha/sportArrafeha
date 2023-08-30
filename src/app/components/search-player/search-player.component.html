@@ -1,0 +1,101 @@
+<app-banner title="search player"></app-banner>
+<div class="site-section" style="margin-left: 150px; padding-top: 100px">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-7">
+        <form [formGroup]="searchForm">
+          <div class="form-group">
+            player Name<input
+              type="text"
+              formControlName="name"
+              class="form-control"
+              placeholder="player name"
+            />
+          </div>
+          <div
+            *ngIf="
+              searchForm.controls['name'].invalid &&
+              searchForm.controls['name'].touched
+            "
+          >
+            <div *ngIf="searchForm.controls['name'].errors.required">
+              player name required
+            </div>
+          </div>
+          <div class="form-group">
+            player age<input
+              type="text"
+              formControlName="age"
+              class="form-control"
+              placeholder="player age"
+            />
+          </div>
+          <div
+            *ngIf="
+              searchForm.controls['age'].invalid &&
+              searchForm.controls['age'].touched
+            "
+          >
+            <div *ngIf="searchForm.controls['stadium'].errors.required">
+              player name required
+            </div>
+          </div>
+          <div
+            *ngIf="
+              searchForm.controls['age'].invalid &&
+              searchForm.controls['age'].touched
+            "
+          >
+            <div *ngIf="searchForm.controls['age'].errors.required">
+              player age required
+            </div>
+          </div>
+          <span id="matchingTeams"></span>
+          <div class="form-group">
+            <input
+              type="submit"
+              (click)="search()"
+              [disabled]="searchForm.invalid"
+              class="btn btn-primary py-2 px-4"
+              value="Search"
+            />
+          </div>
+        </form>
+        <div *ngIf="matchingPlayers?.length != 0">
+         <h3>Finded Players</h3>
+            <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Age</th>
+                  <th scope="col">Position</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let m of matchingPlayers">
+                  <td>{{m.name}}</td>
+                  <td>{{m.age}}</td>
+                  <td>{{m.position}}</td>
+                </tr>
+              </tbody>
+        </div>
+      </div>
+      <div class="col-lg-4 ml-auto">
+        <ul class="list-unstyled">
+          <li class="mb-2">
+            <strong class="text-white d-block">Address</strong>
+            273 South Riverview Rd. <br />
+            New York, NY 10011
+          </li>
+          <li class="mb-2">
+            <strong class="text-white d-block">Email</strong>
+            <a href="#">info@unslate.co</a>
+          </li>
+          <li class="mb-2">
+            <strong class="text-white d-block"> Phone </strong>
+            <a href="#">+12 345 6789 012</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

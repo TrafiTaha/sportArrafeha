@@ -1,0 +1,54 @@
+<div class="container" style="padding-top: 7%;">
+      
+
+    <div class="row">
+      <div class="col-lg-12">
+        
+        <div class="d-flex team-vs">
+          <span class="score">
+          <span [ngStyle]="{color:scoreColor(x.scoreOne,x.scoreTwo)}">{{x.scoreOne}}</span>-
+          <span [ngStyle]="{color:scoreColor(x.scoreTwo,x.scoreOne)}">{{x.scoreTwo}}</span>
+        </span>
+          <div class="team-1 w-50">
+            <div class="team-details w-100 text-center">
+              <img src="assets/images/logo_1.png" alt="Image" class="img-fluid">
+              <h3>
+                 <span [ngClass]="{
+                    win: x.scoreOne > x.scoreTwo,
+                    loss: x.scoreOne < x.scoreTwo,
+                    draw: x.scoreOne == x.scoreTwo
+                 }">{{x.teamOne}}</span>
+                  <span>(win)</span></h3>
+              <ul class="list-unstyled">
+                <li>Anja Landry (7)</li>
+                <li>Eadie Salinas (12)</li>
+                <li>Ashton Allen (10)</li>
+                <li>Baxter Metcalfe (5)</li>
+              </ul>
+            </div>
+          </div>
+          <div class="team-2 w-50">
+            <div class="team-details w-100 text-center">
+              <img src="assets/images/logo_2.png" alt="Image" class="img-fluid">
+              <h3>
+                <span [ngClass]="{
+                  win: x.scoreTwo > x.scoreOne,
+                  loss: x.scoreTwo < x.scoreOne,
+                  draw: x.scoreOne == x.scoreTwo
+               }">{{x.teamTwo}}</span>
+                 <span>(loss)</span></h3>
+              <ul class="list-unstyled">
+                <li>Macauly Green (3)</li>
+                <li>Arham Stark (8)</li>
+                <li>Stephan Murillo (9)</li>
+                <li>Ned Ritter (5)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div>
+        <button  class="btn btn-outline-danger" (click)="deleteMatch(x._id)" >Delete</button>
+      </div>
+      </div>
+    </div>
+  </div>
