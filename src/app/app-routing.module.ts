@@ -21,6 +21,7 @@ import { SearchTeamStadiumComponent } from "./components/search-team-stadium/sea
 import { SearchPlayerComponent } from "./components/search-player/search-player.component";
 import { IMCComponent } from "./components/imc/imc.component";
 import { WeatherComponent } from "./components/weather/weather.component";
+import { DispplayTeamPlayersComponent } from "./components/dispplay-team-players/dispplay-team-players.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -47,6 +48,7 @@ const routes: Routes = [
   { path: "imc", component: IMCComponent },
   { path: "signupAdmin", component: SignupComponent },
   { path: "weather", component: WeatherComponent },
+  {path: "searchTeamPlayer", component: DispplayTeamPlayersComponent},
 ];
 
 @NgModule({

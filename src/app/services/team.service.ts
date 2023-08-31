@@ -5,7 +5,7 @@ import { HttpClient } from "@angular/common/http";
   providedIn: 'root'
 })
 export class TeamService {
-  teamURL: string = "http://localhost:3000/teams";
+  teamURL: string = "http://localhost:3000/api/teams";
   constructor(private http: HttpClient) { }
    addTeam(obj) {
     return this.http.post<{msg : string}>(this.teamURL, obj);
@@ -21,6 +21,6 @@ export class TeamService {
     return this.http.put(this.teamURL, obj);
   }
   getAllTeams() {
-    return this.http.get<{team : any}>(this.teamURL);
+    return this.http.get<{teamsTab : any}>(this.teamURL);
   }
 }

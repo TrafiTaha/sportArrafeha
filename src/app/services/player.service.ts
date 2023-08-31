@@ -5,7 +5,7 @@ import { HttpClient } from "@angular/common/http";
   providedIn: "root",
 })
 export class PlayerService {
-  playerUrl: string = "http://localhost:3000/player";
+  playerUrl: string = "http://localhost:3000/api/player";
   constructor(private http: HttpClient) {}
   addPlayer(playerObj) {
     return this.http.post<{ msg: string }>(this.playerUrl, playerObj);

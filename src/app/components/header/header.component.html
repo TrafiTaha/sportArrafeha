@@ -24,43 +24,24 @@
             class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block"
           >
             <li class="active"><a routerLink="/" class="nav-link">Home</a></li>
-            <li  *ngIf="isLoggedIn() && user.role == 'user'">
-              <a
-               
-                routerLink="myMatches"
-                class="nav-link"
-                >Matches</a
-              >
+            <li *ngIf="isLoggedIn() && user.role == 'user'">
+              <a routerLink="myMatches" class="nav-link">Matches</a>
             </li>
             <li *ngIf="isLoggedIn() && user.role == 'user'">
-              <a
-                
-                routerLink="players"
-                class="nav-link"
-                >Players</a
-              >
+              <a routerLink="players" class="nav-link">Players</a>
             </li>
 
-            <li  *ngIf="isLoggedIn() && user.role == 'user'">
-              <a
-               
-                routerLink="search"
-                class="nav-link"
-                >Search</a
-              >
+            <li *ngIf="isLoggedIn() && user.role == 'user'">
+              <a routerLink="search" class="nav-link">Search</a>
             </li>
             <li *ngIf="isLoggedIn() && user.role == 'user'">
-              <a
-                
-                routerLink="searchteamstadium"
-                class="nav-link"
+              <a routerLink="searchteamstadium" class="nav-link"
                 >Search-team-stadium</a
               >
             </li>
             <li *ngIf="isLoggedIn() && user.role == 'admin'">
               <div class="dropdown">
                 <button
-                  
                   style="background-color: transparent; border: none"
                   class="btn btn-secondary dropdown-toggle"
                   type="button"
@@ -88,25 +69,19 @@
               </div>
             </li>
             <li *ngIf="!isLoggedIn()">
-              <a  routerLink="signin" class="nav-link"
-                >Login</a
-              >
+              <a routerLink="signin" class="nav-link">Login</a>
             </li>
             <li *ngIf="!isLoggedIn()">
-              <a
-                
-                routerLink="subscription"
-                class="nav-link"
-                >Signup</a
+              <a routerLink="subscription" class="nav-link">Signup</a>
+            </li>
+            <li *ngIf="isLoggedIn()">
+              <a (click)="logOut()" routerLink="signin" class="nav-link"
+                >logout</a
               >
             </li>
             <li *ngIf="isLoggedIn()">
-              <a
-                
-                (click)="logOut()"
-                routerLink="signin"
-                class="nav-link"
-                >logout</a
+              <a routerLink="searchTeamPlayer" class="nav-link"
+                >search team player</a
               >
             </li>
           </ul>

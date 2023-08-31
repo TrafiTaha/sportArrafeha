@@ -17,6 +17,11 @@ export class AddTeamComponent implements OnInit {
   }
   addTeams(){
     console.log("here added matchs", this.addedTeam);
-    this.tService.addTeam(this.addedTeam).subscribe();
+    this.tService.addTeam(this.addedTeam).subscribe(
+      (Response)=>{
+        console.log("here response from be:", Response);
+        
+      }
+    );
   }
 }

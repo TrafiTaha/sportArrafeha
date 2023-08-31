@@ -11,7 +11,7 @@ import { TeamService } from 'src/app/services/team.service';
 })
 export class TeamTableComponent implements OnInit {
   teamsTab: any;
-
+  teams : any = [];
   constructor(private router:Router,
               private tService: TeamService) { }
 
@@ -32,6 +32,6 @@ export class TeamTableComponent implements OnInit {
     this.tService.getAllTeams().subscribe(
       (response) => {
         console.log("here response from backend", response);
-        this.teamsTab = response.team;
+        this.teams = response.teamsTab;
       });
 }}

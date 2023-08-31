@@ -30,6 +30,7 @@ const ImcModel = require("./models/imc");
 const userModel = require("./models/user");
 const user = require("./models/user");
 const { log } = require("console");
+const team = require("./models/team");
 // send JSON responses
 app.use(bodyParser.json());
 // get objects from request
@@ -222,22 +223,43 @@ app.delete("/player/:id", (req, res) => {
 app.put("/player", (req, res) => {
   //traitement de la request
 });
-//business logic: add player
-app.post("/player", (req, res) => {
-  //traitement de la request
-  console.log("Here into BL : add player", req.body);
-  // match=> instance de type match
-  let player = new PlayerModel(req.body);
-  // save=> methode predefinie mongoose
-  player.save();
-  res.json({ msg: "added with success" });
-});
+/// Business Logic : Add Player
+app.post("/api/player", (req, res) => {
+  try {
+  Team.findById(req.body.teamId).then((team) => {
+  if (!team) {
+  return res.status(404).json({ message: "Team not found" });
+  }
+  const player = new Player({
+  name: req.body.name,
+  nbr: req.body.nbr,
+  age: req.body.age,
+  team: team._id,
+  });
+  player.save((err, doc) => {
+  team.players.push(player);
+  team.save();
+  res.status(201).json(player);
+  });
+  });
+  } catch (error) {
+  res
+  .status(500)
+  .json({ message: "Error creating player", error: error.message });
+  }
+  });
+  
 
 //BUSINESS LOGIC: TEAM PART
 
 //business logic:get all teams
-app.get("/teams", (req, res) => {
+app.get("/api/teams", (req, res) => {
   //traitement de la request
+  team.find().then(
+    (docs)=>{
+      res.json({teamsTab: docs})
+    }
+  )
 });
 //business logic: get teams by ID
 // ID is a param
@@ -253,13 +275,13 @@ app.put("/teams", (req, res) => {
   //traitement de la request
 });
 //business logic: add teams
-app.post("/teams", (req, res) => {
+app.post("/api/teams", (req, res) => {
   //traitement de la request
   console.log("Here into BL : add team", req.body);
   // match=> instance de type match
   let team = new TeamModel(req.body);
   // save=> methode predefinie mongoose
-  team.save();
+  team.save(err, doc);
   res.json({ msg: "added with success" });
 });
 

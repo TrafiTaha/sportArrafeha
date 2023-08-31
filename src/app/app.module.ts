@@ -46,6 +46,7 @@ import { IMCComponent } from './components/imc/imc.component';
 import { WeatherComponent } from './components/weather/weather.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { JwPaginationModule } from 'jw-angular-pagination';
+import { DispplayTeamPlayersComponent } from './components/dispplay-team-players/dispplay-team-players.component';
 
 @NgModule({
   declarations: [
@@ -90,6 +91,7 @@ import { JwPaginationModule } from 'jw-angular-pagination';
     IMCComponent,
     WeatherComponent,
     FilterPipe,
+    DispplayTeamPlayersComponent,
     
   ],
   imports: [

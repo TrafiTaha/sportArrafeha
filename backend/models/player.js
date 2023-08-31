@@ -1,14 +1,29 @@
+// // import mongoose module
+// const mongoose = require("mongoose");
+
+// // create match schema
+// const playerSchema = mongoose.Schema({
+//   name: String,
+//   age: Number,
+//   position: String,
+// });
+
+// // Affect model name to Schema
+// const player = mongoose.model("Player", playerSchema);
+// // export match
+// module.exports = player;
 // import mongoose module
 const mongoose = require("mongoose");
-
-// create match schema
-const playerSchema = mongoose.Schema({
+const playerSchema = new mongoose.Schema({
   name: String,
-  age: Number,
   position: String,
+  age: Number,
+  team: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Team",
+  },
 });
-
-// Affect model name to Schema
+// create Model Name "Player"
 const player = mongoose.model("Player", playerSchema);
-// export match
+// make player exportable
 module.exports = player;

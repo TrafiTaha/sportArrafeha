@@ -3,17 +3,15 @@
     <tr>
       <th scope="col">Id</th>
       <th scope="col">Name</th>
-      <th scope="col">Stadium</th>
       <th scope="col">Owner</th>
       <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
-    <tr  *ngFor="let m of teamsTab">
-      <th scope="row">{{m._id}}</th>
-      <td>{{m.name}}</td>
-      <td>{{m.stadium}}</td>
-      <td>{{m.Owner}}</td>
+    <tr  *ngFor="let t of teamsTab">
+      <th scope="row">{{t._id}}</th>
+      <td>{{t.name}}</td>
+      <td>{{t.Owner}}</td>
       <td>
         <button class="btn btn-outline-success" style="margin-right: 10px" (click)="displayTeam(m._id)">
           display</button
